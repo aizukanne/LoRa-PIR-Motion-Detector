@@ -20,7 +20,6 @@ const unsigned TX_INTERVAL = 30;
 
 This sketch sends an update containing the status of the motion sensor, GPS coordinates of the device and device ID and Network ID in a concatenated payload. However the device and network ID may be removed to reduce payload size and airtime and devices can be identified using the device ID from the LoRa Server.
 
-If a GPS module is connected, set define GPS to 1 in the line 
-			#define GPS 0.
+If a GPS module is connected, set define GPS to 1 in the line 	#define GPS 0.
 		
 Hope this is helpful to someone.
