@@ -1,5 +1,11 @@
 # LoRa-PIR-Motion-Detector
-This is a collection of arduino sketches for a PIR motion detector using LoRaWAN for data uplinks
+This is projects provides schematics and PCB design files for a solar powered LoRa IoT Node hardware as well as a collection of arduino sketches for a PIR motion detector using LoRaWAN for data uplinks.
+
+The hardware can be used with a variety of sensors connected to any of the I/O pins. This projects uses a PIR motion sensor.
+
+<p align="center">
+  <img src="https://github.com/aizukanne/LoRa-PIR-Motion-Detector/blob/master/Hardware/PCB_Smart-LoRa-Node-PCB.png" alt="24-pin Header"/>
+</p>
 
 The arduino folder contains two sketches. One for Over the Air Activation (OTAA) and another for Activation by Personalization (ABP). The Keys insert are dummys so ensure you enter the keys from TTN or other LoRaWAN Server as specified. It uses IBM LMIC (LoraMAC-in-C) library for arduino.
 
