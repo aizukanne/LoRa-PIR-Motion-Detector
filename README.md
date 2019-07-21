@@ -3,9 +3,9 @@ This is projects provides schematics and PCB design files for a solar powered Lo
 
 The hardware can be used with a variety of sensors connected to any of the analog I/O pins (A0 - A7) or digital I/O pins (D7 - D10, D14, D15). Please note the following:
 <ul>
-	<il>D14 and A0 share same physical pin</il>
-	<il>D15 and A1 share same physical pin</il>
-	<il>The use at anytime is defined in your sketch</il>
+	<li>D14 and A0 share same physical pin</li>
+	<li>D15 and A1 share same physical pin</li>
+	<li>The use at anytime is defined in your sketch</li>
 </ul>
 
 <p align="center">
