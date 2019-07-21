@@ -180,6 +180,35 @@ void detect_motion() {
   }
 }
 
+void get_gps(){
+    NMEAGPS  gps; // This parses the GPS characters
+    gps_fix  fix; // This holds on to the latest values
+    Serial.println(F("Searching for GPS Signal "));
+    bool newdata = false;
+    unsigned long start = millis();
+    while (newdata == false) {
+      if (gps.available( gpsPort )) {
+        fix = gps.read();
+        digitalWrite(ledPin, HIGH);   // turn the LED on (HIGH is the voltage level)
+        if (fix.valid.location) {
+          #if defined(DEVMODE)
+            Serial.println();
+            Serial.println(F("GPS Signal aqcuired."));
+            Serial.print( F("Location: ") );          
+            Serial.print( fix.latitude(), 6 );
+            Serial.print( ',' );
+            Serial.println( fix.longitude(), 6 );
+          #endif
+          myData.latitude = fix.latitude();
+          myData.longitude = fix.longitude();
+          newdata = true;
+        }
+        Serial.print(".");
+        delay (2000);
+      }
+    }
+}
+
 void do_send(osjob_t* j){
   // Check if there is not a current TX/RX job running
   if (LMIC.opmode & OP_TXRXPEND) {
@@ -241,32 +270,7 @@ void setup() {
    myData.networkGroup = networkGroup;
 
   if (GPS == 1){
-    NMEAGPS  gps; // This parses the GPS characters
-    gps_fix  fix; // This holds on to the latest values
-    Serial.println(F("Searching for GPS Signal "));
-    bool newdata = false;
-    unsigned long start = millis();
-    while (newdata == false) {
-      if (gps.available( gpsPort )) {
-        fix = gps.read();
-        digitalWrite(ledPin, HIGH);   // turn the LED on (HIGH is the voltage level)
-        if (fix.valid.location) {
-          #if defined(DEVMODE)
-            Serial.println();
-            Serial.println(F("GPS Signal aqcuired."));
-            Serial.print( F("Location: ") );          
-            Serial.print( fix.latitude(), 6 );
-            Serial.print( ',' );
-            Serial.println( fix.longitude(), 6 );
-          #endif
-          myData.latitude = fix.latitude();
-          myData.longitude = fix.longitude();
-          newdata = true;
-        }
-        Serial.print(".");
-        delay (2000);
-      }
-    }
+    get_gps();
   } else {
         myData.latitude = 0.0;
         myData.longitude = 0.0;
