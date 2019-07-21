@@ -5,7 +5,7 @@ The hardware can be used with a variety of sensors connected to any of the analo
 <ul>
 	<li>D14 and A0 share same physical pin</li>
 	<li>D15 and A1 share same physical pin</li>
-	<li>The use at anytime is defined in your sketch</li>
+	<li>LED is connected between D7 and GND through a 1K resistor</li>
 </ul>
 
 <p align="center">
